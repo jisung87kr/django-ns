@@ -1,0 +1,39 @@
+{% extends 'ns/master.html' %}
+{% block content %}
+<form action="{% url 'ns:search_rank' %}">
+    <div class="form-group">
+        <h1 class="text-center mb-3">네이버쇼핑 순위 검색</h1>
+        <ul class="nav nav-tabs mb-4">
+            <li class="nav-item">
+                <a class="nav-link active" href="#url" data-toggle="tab">주소 검색</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#store" data-toggle="tab">스토어검색</a>
+            </li>
+        </ul>
+        <div id="nav-tabContent" class="tab-content">
+            <div class="tab-pane fade show active" id="url" >
+                <div class="input-group">
+                    <input type="text" class="form-control" name="itemurl" placeholder="상품주소를 입력하세요">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="store" >
+                <div class="row">
+                    <div class="col-5">
+                        <input type="text" class="form-control" name="store" placeholder="상호명을 입력하세요">
+                    </div>
+                    <div class="col-5">
+                        <input type="text" class="form-control" name="item" placeholder="제품명을 입력하세요">
+                    </div>
+                    <div class="col-2">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock  %}

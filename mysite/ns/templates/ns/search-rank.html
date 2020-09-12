@@ -1,0 +1,29 @@
+{% extends 'ns/master.html' %}
+{% block content %}
+{% for item in result.props.pageProps.initialState.products.list %}
+<div class="card mt-3 mb-3">
+    <div class="card-body">
+        <div class="media">
+            <img src="{{ item.item.imageUrl }}" class="align-self-start mr-5" alt="..." width="150px">
+            <div class="media-body">
+                <h6 class="mt-0">
+                    <a href="{% if item.item.adcrUrl %} {{item.item.adcrUrl}} {% else %} {{item.item.crUrl}} {% endif %}">
+                        {{ item.item.productName }}
+                    </a>
+                </h6>
+                <ul class="card-text list-unstyled small">
+                    <li>{{ item.item.mallName }}</li>
+                    <li>{{ item.item.productTitle }}</li>
+                    <li>
+                        {{ item.item.category1Name }} / {{ item.item.category2Name }} / {{ item.item.category3Name }} / {{ item.item.category4Name }}
+                    </li>
+                    <li>브랜드 : {{ item.item.brand }} / 메이커 : {{ item.item.maker }}</li>
+                    <li>랭크 : {{ item.item.rank }}</li>
+                    <li>리뷰수 : {{ item.item.reviewCount }} / 연간리뷰수 :{{ item.item.yearReviewCount }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock  %}

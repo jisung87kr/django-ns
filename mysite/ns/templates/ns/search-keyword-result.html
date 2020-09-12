@@ -1,0 +1,57 @@
+{% extends 'ns/master.html' %}
+{% block content %}
+<h1 class="text-center mb-3">키워드검색</h1>
+<div class="tab-pane fade show active" id="url" >
+    <form action="{% url 'ns:search_keyword_result' %}" method="GET">
+        <div class="input-group">
+            <input type="text" class="form-control" name="keyword" placeholder="상품주소를 입력하세요">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+    <div class="table-responsive">
+        <table class="table table-bordered mt-5 small">
+            <thead class="thead-dark">
+                <tr>
+                    <th rowspan="2">순위</th>
+                    <th rowspan="2">제품명</th>
+                    <th colspan="2">월간검색수</th>
+                    <th colspan="2">월간클릭수</th>
+                    <th colspan="2">월간클릭률</th>
+                    <th rowspan="2">경쟁강도</th>
+                    <th rowspan="2">월평균노출<br> 광고수</th>
+                </tr>
+                <tr>
+                    <th>PC</th>
+                    <th>MO</th>
+                    <th>PC</th>
+                    <th>MO</th>
+                    <th>PC</th>
+                    <th>MO</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in result.keywordList%}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ item.relKeyword }}</td>
+
+                        <td>{{ item.monthlyPcQcCnt }}</td>
+                        <td>{{ item.monthlyMobileQcCnt }}</td>
+
+                        <td>{{ item.monthlyAvePcClkCnt }}</td>
+                        <td>{{ item.monthlyAveMobileClkCnt }}</td>
+
+                        <td>{{ item.monthlyAvePcCtr }}</td>
+                        <td>{{ item.monthlyAveMobileCtr }}</td>
+
+                        <td>{{ item.compIdx }}</td>
+                        <td>{{ item.plAvgDepth }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock  %}
