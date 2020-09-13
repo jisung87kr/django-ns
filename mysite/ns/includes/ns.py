@@ -19,10 +19,10 @@ class NsParser:
         parts = urlparse(itemurl)
         qs = dict(parse_qsl(parts.query))
         if 'search.shopping.naver.com' in parts.netloc:
-            query = qs['query']
+            # query = qs['query']
             itemid = qs['nvMid']
             result = self.parse_list(query)
-            result['find_target'] = { 'itemid' : itemid }
+            result['find_target'] = { 'id' : itemid }
         else:
             path = parts.path.split('/')
             result = self.parse_list(query)
@@ -31,7 +31,7 @@ class NsParser:
 
     def search_store(self, query, store):
         result = self.parse_list(query)
-        result['find_target'] = { 'mallname' : 'mallname' }
+        result['find_target'] = { 'mallname' : store }
         return result
 
     def parse_list(self, query):
