@@ -13,7 +13,7 @@ def searchRank(request):
     if request.GET['store']:
         result = ns.search_store(request.GET['item'], request.GET['store'])
     else :
-        result = ns.search_url(request.GET['itemurl'])
+        result = ns.search_url(request.GET['query'], request.GET['itemurl'])
 
     context = {'result' : result }
         

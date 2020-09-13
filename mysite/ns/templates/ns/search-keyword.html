@@ -21,6 +21,7 @@
                     <th colspan="2">월간클릭률</th>
                     <th rowspan="2">경쟁강도</th>
                     <th rowspan="2">월평균노출<br> 광고수</th>
+                    <th rowspan="2">광고단가</th>
                 </tr>
                 <tr>
                     <th>PC</th>
@@ -32,22 +33,24 @@
                 </tr>
             </thead>
             <tbody>
+                {% load humanize %}
                 {% for item in result.keywordList%}
                     <tr>
                         <td>{{ forloop.counter }}</td>
                         <td>{{ item.relKeyword }}</td>
 
-                        <td>{{ item.monthlyPcQcCnt }}</td>
-                        <td>{{ item.monthlyMobileQcCnt }}</td>
+                        <td>{{ item.monthlyPcQcCnt | intcomma }}</td>
+                        <td>{{ item.monthlyMobileQcCnt | intcomma }}</td>
 
-                        <td>{{ item.monthlyAvePcClkCnt }}</td>
-                        <td>{{ item.monthlyAveMobileClkCnt }}</td>
+                        <td>{{ item.monthlyAvePcClkCnt | intcomma }}</td>
+                        <td>{{ item.monthlyAveMobileClkCnt | intcomma }}</td>
 
-                        <td>{{ item.monthlyAvePcCtr }}</td>
-                        <td>{{ item.monthlyAveMobileCtr }}</td>
+                        <td>{{ item.monthlyAvePcCtr | intcomma }}</td>
+                        <td>{{ item.monthlyAveMobileCtr | intcomma }}</td>
 
                         <td>{{ item.compIdx }}</td>
                         <td>{{ item.plAvgDepth }}</td>
+                        <td>{{ 10000 | intcomma }}원</td>
                     </tr>
                 {% endfor %}
             </tbody>
